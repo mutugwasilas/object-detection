@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sheep Detector</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin: 20px; }
+        .images { display: flex; justify-content: center; gap: 20px; }
+        img { max-width: 500px; border: 1px solid #ddd; }
+        .message { color: red; font-weight: bold; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Upload a Sheep Photo</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Detect Sheep</button>
+    </form>
+
+    {% if message %}
+        <div class="message">{{ message }}</div>
+        <div class="images">
+            <div>
+                <h3>Original</h3>
+                <img src="{{ uploaded_image }}" alt="Uploaded Image">
+            </div>
+            <div>
+                <h3>Result</h3>
+                <img src="{{ result_image }}" alt="Result Image">
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>
